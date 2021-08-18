@@ -1,12 +1,16 @@
-import { useState } from 'react';
 import { SearchIcon } from './SearchIcon';
 
-export function CustomInput() {
+interface IInputProps {
+  value: string,
+  setValue: (newValue: string) => void
+}
 
-  const [value, setValue] = useState('');
+export function CustomInput({ 
+  value,
+  setValue
+}: IInputProps) {
 
   return (
-    <>
     <div className='customInputContainer'>
       <SearchIcon />
 
@@ -17,6 +21,5 @@ export function CustomInput() {
         placeholder='Search'
       />
     </div>
-    </>
   )
 }

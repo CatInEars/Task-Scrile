@@ -1,9 +1,23 @@
 import { LoadIndicatorIcon } from "./LoadIndicatorIcon";
 
-export function HintList() {
+interface IHintProps {
+  data: any,
+  isLoad: boolean,
+  searchText: string
+}
+export function HintList({
+  data,
+  isLoad,
+  searchText
+}: IHintProps) {
   return (
     <div className='hintContainer'>
-      <LoadIndicatorIcon />
+      {
+        !isLoad ?
+          <LoadIndicatorIcon />
+        :
+          null
+      }
     </div>
   )
 }
