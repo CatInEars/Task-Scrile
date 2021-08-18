@@ -22,7 +22,7 @@ export function App() {
             setUsers(serverData[0])
             setPhotos(serverData[1])
             setIsLoad(true);
-          }, 800);
+          }, 150);
         })
     }
 
@@ -35,14 +35,15 @@ export function App() {
         setValue={setInputValue}
       />
       {
-        inputValue.replace(/\s/g, '') === '' ?
+        inputValue.replace(/\s/g, '') === ''?
           null
         :
           <HintList 
-            users={usersData}
+            allUsers={usersData}
             photos={photosData}
             isLoad={isLoad}
-            searchText={inputValue}
+            searchText={inputValue.replace(/\s/g, '')}
+            setInputValue={setInputValue}
           />
       }
     </>

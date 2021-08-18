@@ -1,35 +1,46 @@
+import { useEffect } from "react";
+import { useState } from "react";
+import { getFilteredUsers } from "../modules/getFilteredUsers";
 import { IPhotos, IUser } from "../types";
 import { LoadIndicatorIcon } from "./LoadIndicatorIcon";
+import { UserItem } from "./UserItem";
 
 interface IHintProps {
-  users: IUser[],
+  allUsers: IUser[],
   photos: IPhotos[],
   isLoad: boolean,
-  searchText: string
+  searchText: string,
+  setInputValue: (newValue: string) => void
 }
 export function HintList({
-  users,
+  allUsers,
   photos,
   isLoad,
-  searchText
+  searchText,
+  setInputValue
 }: IHintProps) {
-  console.log(users)
+
+  const [users, setUsers] = useState<IUser[]>(
+    getFilteredUsers(allUsers, searchText)
+  );
+
+  useEffect(() => {
+    setUsers(getFilteredUsers(allUsers, searchText))
+  }, [searchText, isLoad, allUsers])
+
   return (
     <div className='hintContainer'>
       {
         !isLoad ?
           <LoadIndicatorIcon />
         :
-          users.map((user: IUser, index) => (
-            <div className='userContainer'>
-              <div 
-                className='userImage'
-              />
-              <div className='userInfo'>
-                <a href='#'>{user.name}</a>
-                <p>@{user.username}</p>
-              </div>
-            </div>
+          users.map((user: IUser, index: number) => (
+            <UserItem
+              user={user}
+              key={index}
+              setInputValue={setInputValue}
+              index={index}
+            />
           ))
       }
     </div>
