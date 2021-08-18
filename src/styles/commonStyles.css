@@ -1,17 +1,16 @@
 body {
-  padding: 0;
-  margin-top: 200px;
+  margin: 0;
+  padding-top: 200px;
 
   font-family: 'Noto Sans', Arial, sans-serif;
 
   display: flex;
   justify-content: center;
-  height: 100vh;
 }
 
 .searchIcon {
   position: absolute;
-  z-index: 0;
+  z-index: -1;
   left: 19px;
 }
 
@@ -42,25 +41,41 @@ body {
   width: 318px;
   height: 222px;
   padding: 16px;
-  
-  position: absolute;
 
-  background-color: skyblue;
+  position: relative;
+
+  background-color: lightgray;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
 
-  overflow: hidden;
+  overflow: auto;
 
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
 }
 
 .loadIndicator {
+  position: absolute;
+  top: 50%;
+  margin-top: -38px;
+
   animation-name: rotation;
   animation-duration: 0.6s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
+}
+
+.userContainer {
+  width: 100%;
+  height: 50px;
+
+  background-color: red;
+}
+
+.userContainer:not(:first-child) {
+  margin-top: 16px;
 }
 
 @keyframes rotation {
@@ -71,3 +86,7 @@ body {
       transform:rotate(360deg);
   }
 }
+
+.hintContainer::-webkit-scrollbar { width: 0; }
+.hintContainer { -ms-overflow-style: none; }
+.hintContainer { overflow: -moz-scrollbars-none; }

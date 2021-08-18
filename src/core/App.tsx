@@ -1,28 +1,28 @@
 import { useState, useEffect } from 'react';
 import { loadData } from '../modules/loadData';
+import { IPhotos, IUser } from '../types';
 import { CustomInput } from './CustomInput';
 import { HintList } from './HintList';
 
 export function App() {
   const [inputValue, setInputValue] = useState('');
   const [isLoad, setIsLoad] = useState(false);
-  const [data, setData] = useState<any[]>([])
+  const [usersData, setUsers] = useState<IUser[]>([])
+  const [photosData, setPhotos] = useState<IPhotos[]>([])
 
   useEffect(() => {
-    if (inputValue === '') return;
-    // let searchText = inputValue.replace(/\s/g, '');
+    if (inputValue.replace(/\s/g, '') === '') return;
 
-    if (isLoad) {
-
-    } else {
+    if (!isLoad) {
       loadData()
         .then((responses: any) => Promise.all(responses.map((item: any) => item.json())))
-        .then(serverData => {
+        .then((serverData: IUser[] & IPhotos) => {
           // this timeout for loadIcon
           setTimeout(() => {
-            setData(serverData)
+            setUsers(serverData[0])
+            setPhotos(serverData[1])
             setIsLoad(true);
-          }, 500);
+          }, 800);
         })
     }
 
@@ -34,11 +34,17 @@ export function App() {
         value={inputValue}
         setValue={setInputValue}
       />
-      <HintList 
-        data={data}
-        isLoad={isLoad}
-        searchText={inputValue}
-      />
+      {
+        inputValue.replace(/\s/g, '') === '' ?
+          null
+        :
+          <HintList 
+            users={usersData}
+            photos={photosData}
+            isLoad={isLoad}
+            searchText={inputValue}
+          />
+      }
     </>
   )
 }

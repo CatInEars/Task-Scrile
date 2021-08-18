@@ -1,12 +1,15 @@
+import { IPhotos, IUser } from "../types";
 import { LoadIndicatorIcon } from "./LoadIndicatorIcon";
 
 interface IHintProps {
-  data: any,
+  users: IUser[],
+  photos: IPhotos[],
   isLoad: boolean,
   searchText: string
 }
 export function HintList({
-  data,
+  users,
+  photos,
   isLoad,
   searchText
 }: IHintProps) {
@@ -16,7 +19,11 @@ export function HintList({
         !isLoad ?
           <LoadIndicatorIcon />
         :
-          null
+          users.map((user: IUser, index) => (
+            <div className='userContainer'>
+              <p>{user.name}</p>
+            </div>
+          ))
       }
     </div>
   )
