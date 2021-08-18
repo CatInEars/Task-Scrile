@@ -1,0 +1,32 @@
+body {
+  font-family: 'Noto Sans', Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.searchIcon {
+  position: absolute;
+  z-index: -1;
+  left: 19px;
+}
+
+.customInputContainer {
+  width: 350px;
+  height: 60px;
+  border-bottom: 1px solid #262626;
+  font-size: 17px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.customInput {
+  outline: none;
+  border: none;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  padding-left: 57px;
+}
