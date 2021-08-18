@@ -13,6 +13,7 @@ export function HintList({
   isLoad,
   searchText
 }: IHintProps) {
+  console.log(users)
   return (
     <div className='hintContainer'>
       {
@@ -21,7 +22,13 @@ export function HintList({
         :
           users.map((user: IUser, index) => (
             <div className='userContainer'>
-              <p>{user.name}</p>
+              <div 
+                className='userImage'
+              />
+              <div className='userInfo'>
+                <a href='#'>{user.name}</a>
+                <p>@{user.username}</p>
+              </div>
             </div>
           ))
       }
