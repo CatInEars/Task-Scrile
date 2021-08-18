@@ -1,8 +1,11 @@
-import React from 'react';
 import { CustomInput } from './CustomInput';
+import { HintList } from './HintList';
 
 export function App() {
   return (
-    <CustomInput />
+    <>
+      <CustomInput />
+      <HintList />
+    </>
   )
 }
