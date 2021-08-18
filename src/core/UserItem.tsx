@@ -24,7 +24,7 @@ export function UserItem({
       onClick={handleClick}
     >
       <img
-        src={`/images/user${user.id}.jpg`}
+        src={`images/user${user.id}.jpg`}
         className='userImage'
         alt='user'
       />
