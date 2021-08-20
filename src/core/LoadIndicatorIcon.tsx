@@ -1,4 +1,4 @@
-export function LoadIndicatorIcon() {
+export function LoadIndicatorIcon(props: any) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7,6 +7,7 @@ export function LoadIndicatorIcon() {
       fill="none"
       viewBox="0 0 76 76"
       className="loadIndicator"
+      {...props}
     >
       <path
         stroke="url(#paint0_linear)"

@@ -29,10 +29,15 @@ export function HintList({
   }, [searchText, isLoad, allUsers])
 
   return (
-    <div className='hintContainer'>
+    <div 
+      className='hintContainer'
+      data-testid='hint-container'
+    >
       {
         !isLoad ?
-          <LoadIndicatorIcon />
+          <LoadIndicatorIcon 
+            data-testid='load-icon'
+          />
         :
           users.map((user: IUser, index: number) => (
             <UserItem

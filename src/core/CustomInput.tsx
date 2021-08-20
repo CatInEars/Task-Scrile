@@ -19,6 +19,7 @@ export function CustomInput({
         value={value}
         onChange={(e) => setValue(e.target.value)}
         placeholder='Search'
+        data-testid="search-input"
       />
     </div>
   )

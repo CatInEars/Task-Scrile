@@ -21,10 +21,11 @@ export function UserItem({
   return (
     <div 
       className='userContainer'
+      data-testid='user-container'
       onClick={handleClick}
     >
       <img
-        src={`images/user${user.id}.jpg`}
+        src={`./images/user${user.id}.jpg`}
         className='userImage'
         alt='user'
       />
